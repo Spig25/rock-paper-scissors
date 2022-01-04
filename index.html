@@ -4,108 +4,113 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
+    <title>rock paper scissors</title>
 </head>
 <body>
     <script>
         
-
+        let computerPoints = 0
+        let playerPoints = 0
         for (let i = 0; i < 5; i++) {
     
             let randomNumber = Math.floor(Math.random() * 3)
             // console.log(randomNumber)
             function computerPlay() {
                 if (randomNumber === 0) {
-                    return "Rock"
+                    return "rock"
                 }
                 else if (randomNumber === 1) {
-                    return "Paper"
+                    return "paper"
                 }
                 else {
-                    return "Scissors"
+                    return "scissors"
                 }
             }
             console.log(computerPlay())
 
 
 
-            const tieRound = "Tied round"
-            const loseRound = "You lose the round"
-            const winRound = "You win the round"
-            const wrongInput = "An improper input has been entered"
-
-            const playerSelection = prompt("Shoot!", "Enter Rock, Paper, or Scissors").toLowerCase();
-            const computerSelection = computerPlay();
             
-            let computerPoints = 0
-            let playerPoints = 0
+
+            let playerSelection = prompt("Shoot!", "Enter rock, paper, or scissors").toLowerCase();
+            let computerSelection = computerPlay();
+            
+            let tieRound = `Tied round! You both chose ${computerSelection}.toLowerCase()`
+            let loseRound = `You lose the round. You chose ${playerSelection} and the computer chose ${computerSelection}`
+            let winRound = `You win the round. You chose ${playerSelection} and the computer chose ${computerSelection}`
+            let wrongInput = `An improper input has been entered`
 
 
-            function playRound(playerSelection, computerSelection) {
-                if (computerSelection === "Paper") {
+            function playRound() {
+                if (computerSelection === "paper") {
                     if (playerSelection === "paper") {
-                        return tieRound
+                        return alert(tieRound), --i
                     }
                     else if (playerSelection === "rock") {
-                        return loseRound
+                        return alert(loseRound), ++computerPoints
                     }
                     else if (playerSelection === "scissors") {
-                        return winRound
+                        return alert(winRound), ++playerPoints
                     }
                     else {
-                        return wrongInput
+                        return alert(wrongInput), --i
                     }
                 }
-                else if (computerSelection === "Rock") {
+                else if (computerSelection === "rock") {
                     if (playerSelection === "paper") {
-                        return winRound
+                        return alert(winRound), ++playerPoints
                     }
                     else if (playerSelection === "rock") {
-                        return tieRound
+                        return alert(tieRound), --i
                     }
                     else if (playerSelection === "scissors") {
-                        return loseRound
+                        return alert(loseRound), ++computerPoints
                     }
                     else {
-                        return wrongInput
+                        return alert(wrongInput), --i
                     }
                 }
                 else {
                     if (playerSelection === "paper") {
-                        return loseRound
+                        return alert(loseRound), ++computerPoints
                     }
                     else if (playerSelection === "rock") {
-                        return winRound
+                        return alert(winRound), ++playerPoints
                     }
                     else if (playerSelection === "scissors") {
-                        return tieRound
+                        return alert(tieRound), --i
                     }
                     else {
-                        return wrongInput
+                        return alert(wrongInput), --i
                     }
                 }
             }
+            playRound()
+            // function game() {
+            //     if (playRound(playerSelection, computerSelection) === loseRound) {
+            //         return ++computerPoints
+            //     }
+            //     else if (playRound(playerSelection, computerSelection) === tieRound) {
+            //         return
+            //     }
+            //     else if (playRound(playerSelection, computerSelection) === winRound){
+            //         return ++playerPoints
+            //     }
+            //     else {
+            //         alert(wrongInput)
+            //         --i
+            //     }
+            // }
 
-            
-            function game() {
-                if (playRound(playerSelection, computerSelection) === loseRound) {
-                    return ++computerPoints
-                }
-                else if (playRound(playerSelection, computerSelection) === tieRound) {
-                    return
-                }
-                else if (playRound(playerSelection, computerSelection) === winRound){
-                    return ++playerPoints
-                }
-                else {
-                    alert(wrongInput)
-                    --i
-                }
-            }
-
-            console.log(playRound(playerSelection, computerSelection));
+            // console.log(playRound());
             console.log(playerPoints)
             console.log(computerPoints)
+        }
+        if (playerPoints > computerPoints) {
+            alert("You win")
+        }
+        else {
+            alert("You lose")
         }
     </script>
 </body>
