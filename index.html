@@ -14,7 +14,7 @@
         for (let i = 0; i < 5; i++) {
     
             let randomNumber = Math.floor(Math.random() * 3)
-            // console.log(randomNumber)
+            
             function computerPlay() {
                 if (randomNumber === 0) {
                     return "rock"
@@ -35,9 +35,9 @@
             let playerSelection = prompt("Shoot!", "Enter rock, paper, or scissors").toLowerCase();
             let computerSelection = computerPlay();
             
-            let tieRound = `Tied round! You both chose ${computerSelection}`
-            let loseRound = `You lose the round. You chose ${playerSelection} and the computer chose ${computerSelection}`
-            let winRound = `You win the round. You chose ${playerSelection} and the computer chose ${computerSelection}`
+            let tieRound = `Tied round! You both chose ${computerSelection}. The score is currently (You - ${playerPoints}) (Computer - ${computerPoints})`
+            let loseRound = `You lose the round. You chose ${playerSelection} and the computer chose ${computerSelection} (You - ${playerPoints}) (Computer - ${computerPoints + 1})`
+            let winRound = `You win the round. You chose ${playerSelection} and the computer chose ${computerSelection} (You - ${playerPoints + 1}) (Computer - ${computerPoints})`
             let wrongInput = `An improper input has been entered`
 
 
@@ -85,24 +85,9 @@
                     }
                 }
             }
-            playRound()
-            // function game() {
-            //     if (playRound(playerSelection, computerSelection) === loseRound) {
-            //         return ++computerPoints
-            //     }
-            //     else if (playRound(playerSelection, computerSelection) === tieRound) {
-            //         return
-            //     }
-            //     else if (playRound(playerSelection, computerSelection) === winRound){
-            //         return ++playerPoints
-            //     }
-            //     else {
-            //         alert(wrongInput)
-            //         --i
-            //     }
-            // }
 
-            // console.log(playRound());
+            playRound()
+            
             console.log(playerPoints)
             console.log(computerPoints)
         }
