@@ -35,7 +35,7 @@
             let playerSelection = prompt("Shoot!", "Enter rock, paper, or scissors").toLowerCase();
             let computerSelection = computerPlay();
             
-            let tieRound = `Tied round! You both chose ${computerSelection}.toLowerCase()`
+            let tieRound = `Tied round! You both chose ${computerSelection}`
             let loseRound = `You lose the round. You chose ${playerSelection} and the computer chose ${computerSelection}`
             let winRound = `You win the round. You chose ${playerSelection} and the computer chose ${computerSelection}`
             let wrongInput = `An improper input has been entered`
@@ -107,10 +107,10 @@
             console.log(computerPoints)
         }
         if (playerPoints > computerPoints) {
-            alert("You win")
+            alert(`You win! You scored ${playerPoints} and the computer scored ${computerPoints}`)
         }
         else {
-            alert("You lose")
+            alert(`You lose! :( You scored ${playerPoints} and the computer scored ${computerPoints}`)
         }
     </script>
 </body>
