@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        
+
+        for (let i = 0; i < 5; i++) {
+    
+            let randomNumber = Math.floor(Math.random() * 3)
+            // console.log(randomNumber)
+            function computerPlay() {
+                if (randomNumber === 0) {
+                    return "Rock"
+                }
+                else if (randomNumber === 1) {
+                    return "Paper"
+                }
+                else {
+                    return "Scissors"
+                }
+            }
+            console.log(computerPlay())
+
+
+
+            const tieRound = "Tied round"
+            const loseRound = "You lose the round"
+            const winRound = "You win the round"
+            const wrongInput = "An improper input has been entered"
+
+            const playerSelection = prompt("Shoot!", "Enter Rock, Paper, or Scissors").toLowerCase();
+            const computerSelection = computerPlay();
+            
+            let computerPoints = 0
+            let playerPoints = 0
+
+
+            function playRound(playerSelection, computerSelection) {
+                if (computerSelection === "Paper") {
+                    if (playerSelection === "paper") {
+                        return tieRound
+                    }
+                    else if (playerSelection === "rock") {
+                        return loseRound
+                    }
+                    else if (playerSelection === "scissors") {
+                        return winRound
+                    }
+                    else {
+                        return wrongInput
+                    }
+                }
+                else if (computerSelection === "Rock") {
+                    if (playerSelection === "paper") {
+                        return winRound
+                    }
+                    else if (playerSelection === "rock") {
+                        return tieRound
+                    }
+                    else if (playerSelection === "scissors") {
+                        return loseRound
+                    }
+                    else {
+                        return wrongInput
+                    }
+                }
+                else {
+                    if (playerSelection === "paper") {
+                        return loseRound
+                    }
+                    else if (playerSelection === "rock") {
+                        return winRound
+                    }
+                    else if (playerSelection === "scissors") {
+                        return tieRound
+                    }
+                    else {
+                        return wrongInput
+                    }
+                }
+            }
+
+            
+            function game() {
+                if (playRound(playerSelection, computerSelection) === loseRound) {
+                    return ++computerPoints
+                }
+                else if (playRound(playerSelection, computerSelection) === tieRound) {
+                    return
+                }
+                else if (playRound(playerSelection, computerSelection) === winRound){
+                    return ++playerPoints
+                }
+                else {
+                    alert(wrongInput)
+                    --i
+                }
+            }
+
+            console.log(playRound(playerSelection, computerSelection));
+            console.log(playerPoints)
+            console.log(computerPoints)
+        }
+    </script>
+</body>
+</html>
