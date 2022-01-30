@@ -7,11 +7,15 @@
     <title>rock paper scissors</title>
 </head>
 <body>
+    <button>Rock</button>
+    <button>Paper</button>
+    <button>Scissors</button>
+
     <script>
         
         let computerPoints = 0
         let playerPoints = 0
-        for (let i = 0; i < 5; i++) {
+        while (true) {
     
             let randomNumber = Math.floor(Math.random() * 3)
             
@@ -44,7 +48,7 @@
             function playRound() {
                 if (computerSelection === "paper") {
                     if (playerSelection === "paper") {
-                        return alert(tieRound), --i
+                        return alert(tieRound)
                     }
                     else if (playerSelection === "rock") {
                         return alert(loseRound), ++computerPoints
@@ -53,7 +57,7 @@
                         return alert(winRound), ++playerPoints
                     }
                     else {
-                        return alert(wrongInput), --i
+                        return alert(wrongInput)
                     }
                 }
                 else if (computerSelection === "rock") {
@@ -61,13 +65,13 @@
                         return alert(winRound), ++playerPoints
                     }
                     else if (playerSelection === "rock") {
-                        return alert(tieRound), --i
+                        return alert(tieRound)
                     }
                     else if (playerSelection === "scissors") {
                         return alert(loseRound), ++computerPoints
                     }
                     else {
-                        return alert(wrongInput), --i
+                        return alert(wrongInput)
                     }
                 }
                 else {
@@ -78,10 +82,10 @@
                         return alert(winRound), ++playerPoints
                     }
                     else if (playerSelection === "scissors") {
-                        return alert(tieRound), --i
+                        return alert(tieRound)
                     }
                     else {
-                        return alert(wrongInput), --i
+                        return alert(wrongInput)
                     }
                 }
             }
