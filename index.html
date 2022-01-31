@@ -25,7 +25,6 @@
     
         function computerPlay() {
             let randomNumber = Math.floor(Math.random() * 3)
-            // console.log(randomNumber)
             if (randomNumber === 0) {
                 return computerSelection = "rock"
             }
@@ -38,51 +37,51 @@
         }
         
         function playRound() {
-            let tieRound = `Tied round! You both chose ${computerSelection}. The score is currently (You - ${playerPoints}) (Computer - ${computerPoints})`
-            let loseRound = `You lose the round. You chose ${playerSelection} and the computer chose ${computerSelection} (You - ${playerPoints}) (Computer - ${computerPoints + 1})`
-            let winRound = `You win the round. You chose ${playerSelection} and the computer chose ${computerSelection} (You - ${playerPoints + 1}) (Computer - ${computerPoints})`
-            let wrongInput = `An improper input has been entered`
+            // let tieRound = `Tied round! You both chose ${computerSelection}. The score is currently (You - ${playerPoints}) (Computer - ${computerPoints})`
+            // let loseRound = `You lose the round. You chose ${playerSelection} and the computer chose ${computerSelection} (You - ${playerPoints}) (Computer - ${computerPoints + 1})`
+            // let winRound = `You win the round. You chose ${playerSelection} and the computer chose ${computerSelection} (You - ${playerPoints + 1}) (Computer - ${computerPoints})`
+            // let wrongInput = `An improper input has been entered`
 
             if (computerSelection === "paper") {
                 if (playerSelection === "paper") {
-                    return alert(tieRound)
+                    return
                 }
                 else if (playerSelection === "rock") {
-                    return alert(loseRound), ++computerPoints
+                    return ++computerPoints
                 }
                 else if (playerSelection === "scissors") {
-                    return alert(winRound), ++playerPoints
+                    return ++playerPoints
                 }
                 else {
-                    return alert(wrongInput)
+                    return
                 }
             }
             else if (computerSelection === "rock") {
                 if (playerSelection === "paper") {
-                    return alert(winRound), ++playerPoints
+                    return ++playerPoints
                 }
                 else if (playerSelection === "rock") {
-                    return alert(tieRound)
+                    return
                 }
                 else if (playerSelection === "scissors") {
-                    return alert(loseRound), ++computerPoints
+                    return ++computerPoints
                 }
                 else {
-                    return alert(wrongInput)
+                    return
                 }
             }
             else {
                 if (playerSelection === "paper") {
-                    return alert(loseRound), ++computerPoints
+                    return ++computerPoints
                 }
                 else if (playerSelection === "rock") {
-                    return alert(winRound), ++playerPoints
+                    return ++playerPoints
                 }
                 else if (playerSelection === "scissors") {
-                    return alert(tieRound)
+                    return
                 }
                 else {
-                    return alert("what")
+                    return
                 }
             }
         }
@@ -101,22 +100,26 @@
         })
 
         function game() {
-            console.log(playerSelection)
             computerPlay()
-            console.log(computerSelection)
             playRound()
-            console.log(playerPoints)
-            console.log(computerPoints)
             div.textContent = `You chose ${playerSelection} and the computer chose ${computerSelection}. Score: (You - ${playerPoints}) (Computer - ${computerPoints})`
+            
+            if (playerPoints >= 5) {
+                div.textContent = `You win! You scored ${playerPoints} and the computer scored ${computerPoints}`
+                rockBtn.disabled = true
+                paperBtn.disabled = true
+                scissorsBtn.disabled = true
+           }
+            if (computerPoints >= 5) {
+                div.textContent = `You lose! :( You scored ${playerPoints} and the computer scored ${computerPoints}`
+                rockBtn.disabled = true
+                paperBtn.disabled = true
+                scissorsBtn.disabled = true
+            }
         }
         
 
-        if (playerPoints >= 5) {
-            alert(`You win! You scored ${playerPoints} and the computer scored ${computerPoints}`)
-        }
-        if (computerPoints >= 5) {
-            alert(`You lose! :( You scored ${playerPoints} and the computer scored ${computerPoints}`)
-        }
+        
     </script>
 </body>
 </html>
