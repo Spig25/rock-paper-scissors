@@ -11,6 +11,7 @@
     <button id="paper">Paper</button>
     <button id="scissors">Scissors</button>
     <div></div>
+    <div class="end"></div>
 
     <script>
         
@@ -20,8 +21,10 @@
         const paperBtn = document.querySelector(`#paper`)
         const scissorsBtn = document.querySelector(`#scissors`)
         const div = document.querySelector(`div`)
+        const divEnd = document.querySelector(`.end`)
         let playerSelection
         let computerSelection
+        let log = ``
     
         function computerPlay() {
             let randomNumber = Math.floor(Math.random() * 3)
@@ -37,20 +40,19 @@
         }
         
         function playRound() {
-            // let tieRound = `Tied round! You both chose ${computerSelection}. The score is currently (You - ${playerPoints}) (Computer - ${computerPoints})`
-            // let loseRound = `You lose the round. You chose ${playerSelection} and the computer chose ${computerSelection} (You - ${playerPoints}) (Computer - ${computerPoints + 1})`
-            // let winRound = `You win the round. You chose ${playerSelection} and the computer chose ${computerSelection} (You - ${playerPoints + 1}) (Computer - ${computerPoints})`
-            // let wrongInput = `An improper input has been entered`
-
+            let tieRound = `Tied round! You both chose ${computerSelection}. The score is currently (You - ${playerPoints}) (Computer - ${computerPoints})`
+            let loseRound = `You lose the round. You chose ${playerSelection} and the computer chose ${computerSelection} (You - ${playerPoints}) (Computer - ${computerPoints + 1})`
+            let winRound = `You win the round. You chose ${playerSelection} and the computer chose ${computerSelection} (You - ${playerPoints + 1}) (Computer - ${computerPoints})`
+            
             if (computerSelection === "paper") {
                 if (playerSelection === "paper") {
-                    return
+                    return log = tieRound
                 }
                 else if (playerSelection === "rock") {
-                    return ++computerPoints
+                    return ++computerPoints, log = loseRound
                 }
                 else if (playerSelection === "scissors") {
-                    return ++playerPoints
+                    return ++playerPoints, log = winRound
                 }
                 else {
                     return
@@ -58,13 +60,13 @@
             }
             else if (computerSelection === "rock") {
                 if (playerSelection === "paper") {
-                    return ++playerPoints
+                    return ++playerPoints, log = winRound
                 }
                 else if (playerSelection === "rock") {
-                    return
+                    return log = tieRound
                 }
                 else if (playerSelection === "scissors") {
-                    return ++computerPoints
+                    return ++computerPoints, log = loseRound
                 }
                 else {
                     return
@@ -72,13 +74,13 @@
             }
             else {
                 if (playerSelection === "paper") {
-                    return ++computerPoints
+                    return ++computerPoints, log = loseRound
                 }
                 else if (playerSelection === "rock") {
-                    return ++playerPoints
+                    return ++playerPoints, log = winRound
                 }
                 else if (playerSelection === "scissors") {
-                    return
+                    return log = tieRound
                 }
                 else {
                     return
@@ -102,16 +104,17 @@
         function game() {
             computerPlay()
             playRound()
-            div.textContent = `You chose ${playerSelection} and the computer chose ${computerSelection}. Score: (You - ${playerPoints}) (Computer - ${computerPoints})`
-            
+            // div.textContent = `You chose ${playerSelection} and the computer chose ${computerSelection}. Score: (You - ${playerPoints}) (Computer - ${computerPoints})`
+            div.textContent = `${log}`
+
             if (playerPoints >= 5) {
-                div.textContent = `You win! You scored ${playerPoints} and the computer scored ${computerPoints}`
+                divEnd.textContent = `You win the game!`
                 rockBtn.disabled = true
                 paperBtn.disabled = true
                 scissorsBtn.disabled = true
            }
             if (computerPoints >= 5) {
-                div.textContent = `You lose! :( You scored ${playerPoints} and the computer scored ${computerPoints}`
+                divEnd.textContent = `You lose!`
                 rockBtn.disabled = true
                 paperBtn.disabled = true
                 scissorsBtn.disabled = true
